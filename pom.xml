@@ -14,7 +14,7 @@
 	<name>Proyecto_Final_Grupo7</name>
 	<description>Proyecto final del curso Desarrollo de Aplicaciones Web y Patrones, grupo 7</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>15</java.version>
 	</properties>
 	<dependencies>        
         <dependency>            
@@ -68,8 +68,25 @@
             <groupId>mysql</groupId>            
             <artifactId>mysql-connector-java</artifactId>        
         </dependency>
-                
-    </dependencies>    
+	 <dependency>
+	  <groupId>org.springframework.security</groupId>
+	  <artifactId>spring-security-core</artifactId>
+	  <version>5.7.4</version>
+	  <type>jar</type>
+	 </dependency>
+	 <dependency>
+	  <groupId>org.springframework.security</groupId>
+	  <artifactId>spring-security-web</artifactId>
+	  <version>5.7.4</version>
+	  <type>jar</type>
+	 </dependency>
+	 <dependency>
+	  <groupId>org.springframework.security</groupId>
+	  <artifactId>spring-security-config</artifactId>
+	  <version>5.7.4</version>
+	  <type>jar</type>
+	 </dependency>
+	</dependencies>    
     <build>        
         <plugins>            
             <plugin>                

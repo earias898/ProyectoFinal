@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">   
-    <head>
+    <head th:replace="plantilla/template::head">
         <title>User | Tienda</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,8 +27,8 @@
             <tbody>   
             <th:block th:each="user : ${User}">          
                 <tr>              
-                    <td th:text="${user.getUser_name}"></td>        
-                    <td th:text="${user.getUser_lastname}"></td>                  
+                    <td th:text="${user.getNombre}"></td>        
+                    <td th:text="${user.getApellido}"></td>                  
                     <td th:text="${user.getEmail}"></td>            
                     <td th:text="${user.getPassword}"></td>                              
                 
