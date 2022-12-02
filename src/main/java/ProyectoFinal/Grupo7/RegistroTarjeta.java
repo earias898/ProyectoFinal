@@ -35,6 +35,7 @@ document.getElementById("cardlogo").classList.remove("fa-cc-amex");
 document.getElementById("cardlogo").classList.remove("fa-cc-mastercard");
 document.getElementById("cardlogo").classList.remove("fa-cc-discover");
   }
+  
   // Luhn Algorithm
 	var sum = 0;
   var numdigits = input.length;
