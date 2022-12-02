@@ -1,55 +1,75 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
-*/
-/* 
-    Created on : 1 dic 2022, 1:11:47
-    Author     : NXN05801
-*/
-/* Padding - just for asthetics on Bootsnipp.com */
-body { margin-top:20px; }
-
-/* CSS for Credit Card Payment form */
-.credit-card-box .panel-title {
-    display: inline;
-    font-weight: bold;
-}
-.credit-card-box .form-control.error {
-    border-color: red;
-    outline: 0;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(255,0,0,0.6);
-}
-.credit-card-box label.error {
-  font-weight: bold;
-  color: red;
-  padding: 2px 8px;
-  margin-top: 2px;
-}
-.credit-card-box .payment-errors {
-  font-weight: bold;
-  color: red;
-  padding: 2px 8px;
-  margin-top: 2px;
-}
-.credit-card-box label {
-    display: block;
-}
-/* The old "center div vertically" hack */
-.credit-card-box .display-table {
-    display: table;
-}
-.credit-card-box .display-tr {
-    display: table-row;
-}
-.credit-card-box .display-td {
-    display: table-cell;
-    vertical-align: middle;
-    width: 50%;
-}
-/* Just looks nicer */
-.credit-card-box .panel-heading img {
-    min-width: 180px;
-}
-.customwidth{
-	max-width: 480px
+var cc_number_saved = "";
+function validar(input){
+  var elemento = document.getElementById("cardNumber").value;
+  if (/(4[0-9]{12}(?:[0-9]{3})?)/.test(elemento)) {
+    document.getElementById("cardlogo").classList.add("fa-cc-visa");
+    document.getElementById("cardLogoTop").innerHTML = "<img class='img-responsive pull-right' src='https://i.imgur.com/iqIDYfz.png'>"
+  }
+  if (/3[47][0-9]{13}/.test(elemento)) {
+    document.getElementById("cardlogo").classList.add("fa-cc-amex");
+    document.getElementById("cardLogoTop").innerHTML = "<img class='img-responsive pull-right' src='https://i.imgur.com/WluzPvZ.png'>"
+  }
+  if (/5[1-5][0-9]{14}/.test(elemento)) {
+    document.getElementById("cardlogo").classList.add("fa-cc-mastercard");
+    document.getElementById("cardLogoTop").innerHTML = "<img class='img-responsive pull-right' src='https://i.imgur.com/1U8OBnM.png'>"
+  }
+  if (/6(?:011|5[0-9]{2})[0-9]{12}/.test(elemento)) {
+    document.getElementById("cardlogo").classList.add("fa-cc-discover");
+    document.getElementById("cardLogoTop").innerHTML = "<img class='img-responsive pull-right' src='https://i.imgur.com/H5lJRwk.png'>"
+  }
+  if(elemento == 0){
+    document.getElementById("cardlogo").classList.remove("fa-cc-visa");
+    document.getElementById("cardLogoTop").innerHTML = "<img class='img-responsive pull-right' src='https://i.imgur.com/gIMFDbp.png'>"
+document.getElementById("cardlogo").classList.remove("fa-cc-amex");
+document.getElementById("cardlogo").classList.remove("fa-cc-mastercard");
+document.getElementById("cardlogo").classList.remove("fa-cc-discover");
+  }
+  // Luhn Algorithm
+	var sum = 0;
+  var numdigits = input.length;
+  var parity = numdigits % 2;
+  for(var i=0; i < numdigits; i++) {
+    var digit = parseInt(input.charAt(i))
+    if(i % 2 == parity) digit *= 2;
+    if(digit > 9) digit -= 9;
+    sum += digit;
+  }
+  return (sum % 10) == 0;
+}var cc_number_saved = "";
+function validar(input){
+  var elemento = document.getElementById("cardNumber").value;
+  if (/(4[0-9]{12}(?:[0-9]{3})?)/.test(elemento)) {
+    document.getElementById("cardlogo").classList.add("fa-cc-visa");
+    document.getElementById("cardLogoTop").innerHTML = "<img class='img-responsive pull-right' src='https://i.imgur.com/iqIDYfz.png'>"
+  }
+  if (/3[47][0-9]{13}/.test(elemento)) {
+    document.getElementById("cardlogo").classList.add("fa-cc-amex");
+    document.getElementById("cardLogoTop").innerHTML = "<img class='img-responsive pull-right' src='https://i.imgur.com/WluzPvZ.png'>"
+  }
+  if (/5[1-5][0-9]{14}/.test(elemento)) {
+    document.getElementById("cardlogo").classList.add("fa-cc-mastercard");
+    document.getElementById("cardLogoTop").innerHTML = "<img class='img-responsive pull-right' src='https://i.imgur.com/1U8OBnM.png'>"
+  }
+  if (/6(?:011|5[0-9]{2})[0-9]{12}/.test(elemento)) {
+    document.getElementById("cardlogo").classList.add("fa-cc-discover");
+    document.getElementById("cardLogoTop").innerHTML = "<img class='img-responsive pull-right' src='https://i.imgur.com/H5lJRwk.png'>"
+  }
+  if(elemento == 0){
+    document.getElementById("cardlogo").classList.remove("fa-cc-visa");
+    document.getElementById("cardLogoTop").innerHTML = "<img class='img-responsive pull-right' src='https://i.imgur.com/gIMFDbp.png'>"
+document.getElementById("cardlogo").classList.remove("fa-cc-amex");
+document.getElementById("cardlogo").classList.remove("fa-cc-mastercard");
+document.getElementById("cardlogo").classList.remove("fa-cc-discover");
+  }
+  // Luhn Algorithm
+	var sum = 0;
+  var numdigits = input.length;
+  var parity = numdigits % 2;
+  for(var i=0; i < numdigits; i++) {
+    var digit = parseInt(input.charAt(i))
+    if(i % 2 == parity) digit *= 2;
+    if(digit > 9) digit -= 9;
+    sum += digit;
+  }
+  return (sum % 10) == 0;
 }
